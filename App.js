@@ -68,15 +68,6 @@ class App extends Component<Props> {
     DevMenu.show()
   }
 
-  loadNewPage = () => {
-    application.loadPageWithOptions("hello", {
-      online: true,
-      host: "192.168.1.105",
-      port: "8088",
-      applicationName: "TestProject",
-    })
-  }
-
   back = () => {
     application.back()
   }
@@ -86,12 +77,17 @@ class App extends Component<Props> {
   }
 
   downloadBundle = () => {
+    const applicationName = this.props.screenProps.applicationName
+    console.log("applicationName ", applicationName )
+    const targetBundleFileName = `${applicationName}.jsbundle`
+
     let dirs = RNFetchBlob.fs.dirs
-    this.downloadTask = RNFetchBlob.config({
-      // response data will be saved to this path if it has access right.
-      path : dirs.DocumentDir + '/singleView.jsbundle'
-    })
-      .fetch('GET', 'http://localhost:8000/singleView.jsbundle')
+    this.downloadTask = RNFetchBlob
+      .config({
+        // response data will be saved to this path if it has access right.
+        path: dirs.DocumentDir + "/" + targetBundleFileName,
+      })
+      .fetch("GET", `http://localhost:8000/${targetBundleFileName}`)
 
     this.downloadTask.progress({ count : 5 }, (received, total) => {
         console.log('progress', received / total)
@@ -155,11 +151,19 @@ class App extends Component<Props> {
   }
 }
 
-export default createStackNavigator({
+const Navigator = createStackNavigator({
   Home: {
     screen: App,
   },
 })
+
+class Container extends Component<Props> {
+  render() {
+    return <Navigator screenProps={this.props}/>
+  }
+}
+
+export default Container
 
 const styles = {
   container: {
