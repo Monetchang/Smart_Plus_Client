@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "package-ios": "react-native bundle --entry-file index.js --bundle-output ./ios/singleView.jsbundle --platform ios --assets-dest ./ios --dev false"
+    "package-ios": "react-native bundle --entry-file index.js --bundle-output ./ios/LoadPanel.mxbundle --platform ios --assets-dest ./ios --dev false",
+    "dev": "react-native start --port 8098"
   },
   "dependencies": {
     "react": "16.3.1",

@@ -68,6 +68,8 @@ class App extends Component<Props> {
       clearTimeout(this.downloadBundleTimeout)
       this.downloadBundleTimeout = undefined
     }
+
+    this.downloadTask.cancel((err) => {})
   }
 
   displayDebugMenu = () => {
@@ -86,7 +88,7 @@ class App extends Component<Props> {
   downloadBundle = () => {
     const applicationName = this.props.screenProps.applicationName
     console.log("applicationName ", applicationName )
-    const targetBundleFileName = `${applicationName}.jsbundle`
+    const targetBundleFileName = `${applicationName}.mxbundle`
 
     let dirs = RNFetchBlob.fs.dirs
     this.downloadTask = RNFetchBlob
