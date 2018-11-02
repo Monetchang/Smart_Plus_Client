@@ -63,6 +63,13 @@ class App extends Component<Props> {
     this.downloadBundle()
   }
 
+  componentWillUnmount() {
+    if (this.downloadBundleTimeout) {
+      clearTimeout(this.downloadBundleTimeout)
+      this.downloadBundleTimeout = undefined
+    }
+  }
+
   displayDebugMenu = () => {
     // application.displayDevMenu()
     DevMenu.show()
