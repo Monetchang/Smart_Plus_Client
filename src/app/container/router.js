@@ -47,7 +47,8 @@ class RouterManager extends Component {
                             {/*</Menu>*/}
                         {/*</Sider>*/}
                         <Content style={{padding: '0 24px', minHeight: 280}}>
-                            <Route path="/" exact component={HomeScreen}/>
+                            <Route path="/" exact component={UploadPanelScreen}/>
+                            <Route path="/pray" exact component={HomeScreen}/>
                             <Route path="/panel/" component={UploadPanelScreen}/>
                         </Content>
                     </Layout>
