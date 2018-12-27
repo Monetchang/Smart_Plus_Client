@@ -6,6 +6,7 @@ const path = require("path");
 
 const getEnvironmentValues = () => {
     const env = process.env;
+    console.log("@env", env);
     return env
 };
 
