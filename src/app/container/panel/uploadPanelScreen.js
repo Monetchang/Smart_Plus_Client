@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import {Upload, Icon, message, Input, Button} from 'antd';
 import axios from "axios"
 import '../../assets/css/App.css';
+import config from '../../../config';
 
+const apiServer = config.apiServer;
+const serverURL = `${apiServer.protocol}://${apiServer.host}:${apiServer.port}`
 const Dragger = Upload.Dragger;
 
 
@@ -20,7 +23,7 @@ class UploadPanelScreen extends Component {
     }
 
     onClick = () => {
-        window.open(`http://localhost:7000/?name=singleView`, '_self');
+        window.open(`${serverURL}/?name=singleView`, '_self');
     }
 
     render() {
@@ -28,7 +31,7 @@ class UploadPanelScreen extends Component {
             name: 'file',
             multiple: true,
             data: { name: this.state.bundleName },
-            action: 'http://localhost:7000',
+            action: serverURL,
             onChange(info) {
                 const status = info.file.status;
                 if (status !== 'uploading') {

@@ -25,8 +25,8 @@ class RouterManager extends Component {
                             defaultSelectedKeys={['2']}
                             style={{lineHeight: '64px'}}
                         >
-                            <Menu.Item key="1"><Link to="/">{"祈福"}</Link></Menu.Item>
-                            <Menu.Item key="2"><Link to="/panel/">Upload Bundle</Link></Menu.Item>
+                            <Menu.Item key="1"><Link to="/pray">{"祈福"}</Link></Menu.Item>
+                            <Menu.Item key="2"><Link to="/">Upload Bundle</Link></Menu.Item>
                             <Menu.Item key="3"><Link to="/panel/">None</Link></Menu.Item>
                         </Menu>
                     </Header>
